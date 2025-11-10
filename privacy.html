@@ -1,62 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy – DailyScope News</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy – DailyScope News</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .hero {
+        background: #002244 url('hero.jpg') center/cover no-repeat;
+        color: white;
+        text-align: center;
+        padding: 100px 20px;
+    }
+    .hero h2 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    }
+    .hero p {
+        font-size: 1.2em;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Dynamic Header -->
-  <div id="header-placeholder"></div>
+<header>
+  <h1>DailyScope News</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a class="active" href="privacy.html">Privacy</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <main style="padding:20px; max-width:800px; margin:auto;">
-    <h2>Privacy Policy</h2>
-    <p>Your privacy is important to us. DailyScope News is committed to protecting the personal information you share with us.</p>
-    
-    <h3>Information We Collect</h3>
-    <p>We may collect information when you submit forms, subscribe to newsletters, or interact with our site. This includes your name, email address, and messages.</p>
-    
-    <h3>How We Use Your Information</h3>
-    <p>Your information is used solely to respond to inquiries, provide services, and improve user experience. We do not sell or share your personal data with third parties for marketing purposes.</p>
-    
-    <h3>Cookies & Analytics</h3>
-    <p>Our website may use cookies to enhance your experience and analyze site traffic. These cookies do not contain personally identifiable information.</p>
-    
-    <h3>Third-Party Links</h3>
-    <p>Our site may contain links to third-party websites. We are not responsible for the privacy practices of external sites.</p>
-    
-    <h3>Changes to This Policy</h3>
-    <p>We may update this privacy policy from time to time. Changes will be reflected on this page with an updated date.</p>
-    
-    <p>&copy; 2025 DailyScope News. All Rights Reserved.</p>
-  </main>
+<section class="hero">
+  <h2>Privacy Policy</h2>
+  <p>Your privacy is important to us.</p>
+</section>
 
-  <!-- Dynamic Footer -->
-  <div id="footer-placeholder"></div>
+<main style="padding:20px;">
+  <p>This website respects your privacy. Any information collected is solely used to improve your experience. We do not share personal information with third parties except as required by law.</p>
+</main>
 
-  <script>
-    function loadHTML(containerId, filePath) {
-      const container = document.getElementById(containerId);
-      if (!container) return;
-
-      fetch(filePath)
-        .then(response => response.ok ? response.text() : "")
-        .then(data => container.innerHTML = data)
-        .catch(() => container.innerHTML = "");
-    }
-
-    loadHTML('header-placeholder', './header.html');
-    loadHTML('footer-placeholder', './footer.html');
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const currentPage = window.location.pathname.split("/").pop();
-      document.querySelectorAll('.nav-link').forEach(link => {
-        if (link.getAttribute('href') === currentPage) link.classList.add('active');
-      });
-    });
-  </script>
+<footer>
+  <p>&copy; 2025 DailyScope News. All Rights Reserved.</p>
+  <div style="margin-top:10px;">
+    <a href="https://www.buymeacoffee.com/YOUR_USERNAME" target="_blank" 
+       style="display:inline-block;background:#ff6600;color:#fff;padding:8px 15px;border-radius:5px;text-decoration:none;font-weight:bold;">
+      ☕ Buy Me a Coffee
+    </a>
+    <a href="privacy.html" style="margin-left:15px;color:#fff;text-decoration:underline;">Privacy</a>
+    <a href="terms.html" style="margin-left:10px;color:#fff;text-decoration:underline;">Terms</a>
+    <a href="disclaimer.html" style="margin-left:10px;color:#fff;text-decoration:underline;">Disclaimer</a>
+  </div>
+</footer>
 
 </body>
 </html>
