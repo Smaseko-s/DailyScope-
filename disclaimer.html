@@ -1,58 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Disclaimer – DailyScope News</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .hero {
+        background: #002244 url('hero.jpg') center/cover no-repeat;
+        color: white;
+        text-align: center;
+        padding: 100px 20px;
+    }
+    .hero h2 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    }
+    .hero p {
+        font-size: 1.2em;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    }
+  </style>
 </head>
 <body>
 
-  <header>
-    <h1>DailyScope News</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="privacy.html">Privacy</a></li>
-        <li><a href="terms.html">Terms</a></li>
-        <li><a class="active" href="disclaimer.html">Disclaimer</a></li>
-      </ul>
-    </nav>
-  </header>
+<header>
+  <h1>DailyScope News</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a class="active" href="disclaimer.html">Disclaimer</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <main style="padding:20px; max-width:800px; margin:auto;">
-    <h2>Disclaimer</h2>
+<section class="hero">
+  <h2>Disclaimer</h2>
+  <p>Important information about content usage.</p>
+</section>
 
-    <p>The information provided on DailyScope News (the “Website”) is for general informational purposes only. All content on this site is published in good faith and for general news and informational purposes.</p>
+<main style="padding:20px;">
+  <p>All articles on DailyScope News are for informational purposes only. We do not guarantee accuracy and are not responsible for actions taken based on the content. Users should verify information before relying on it.</p>
+</main>
 
-    <h3>Accuracy of Information</h3>
-    <p>While we strive to ensure that the information provided is accurate and up to date, DailyScope News makes no warranties or representations about the completeness, reliability, or accuracy of this information. Any action you take based on the information found on this website is strictly at your own risk.</p>
-
-    <h3>External Links</h3>
-    <p>Our website may contain links to other websites that are not provided or maintained by us. We do not guarantee the accuracy, relevance, or completeness of any information on external websites.</p>
-
-    <h3>Content Sources</h3>
-    <p>Some news content displayed on this site may be sourced via third-party news APIs for informational use. We do not claim ownership of external news articles and always strive to credit original publishers where applicable.</p>
-
-    <h3>Liability</h3>
-    <p>DailyScope News and its team will not be liable for any losses or damages in connection with the use of our website.</p>
-
-    <p>By using our website, you hereby consent to our disclaimer and agree to its terms.</p>
-
-    <p>Last updated: November 2025</p>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 DailyScope News. All Rights Reserved.</p>
-    <p>
-      <a href="privacy.html">Privacy Policy</a> |
-      <a href="terms.html">Terms of Service</a> |
-      <a href="disclaimer.html">Disclaimer</a>
-    </p>
-  </footer>
+<footer>
+  <p>&copy; 2025 DailyScope News. All Rights Reserved.</p>
+  <div style="margin-top:10px;">
+    <a href="https://www.buymeacoffee.com/YOUR_USERNAME" target="_blank" 
+       style="display:inline-block;background:#ff6600;color:#fff;padding:8px 15px;border-radius:5px;text-decoration:none;font-weight:bold;">
+      ☕ Buy Me a Coffee
+    </a>
+    <a href="privacy.html" style="margin-left:15px;color:#fff;text-decoration:underline;">Privacy</a>
+    <a href="terms.html" style="margin-left:10px;color:#fff;text-decoration:underline;">Terms</a>
+    <a href="disclaimer.html" style="margin-left:10px;color:#fff;text-decoration:underline;">Disclaimer</a>
+  </div>
+</footer>
 
 </body>
 </html>
