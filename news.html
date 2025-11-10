@@ -3,77 +3,111 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Latest News – DailyScope South Africa</title>
+  <title>Latest News – DailyScope News</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Hero Section */
+    .hero {
+        background: #002244 url('hero.jpg') center/cover no-repeat;
+        color: white;
+        text-align: center;
+        padding: 100px 20px;
+    }
+
+    .hero h2 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    }
+
+    .hero p {
+        font-size: 1.2em;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    }
+  </style>
 </head>
 <body>
 
-  <header>
-    <h1>DailyScope News</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a class="active" href="news.html">News</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="privacy.html">Privacy</a></li>
-      </ul>
-    </nav>
-  </header>
+<header>
+  <h1>DailyScope News</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a class="active" href="news.html">News</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <main style="padding:20px;">
-    <h2>Latest South African Headlines</h2>
-    <div class="news-container" id="latestNews">
-      <p>Loading latest news...</p>
-    </div>
-  </main>
+<!-- Hero Section -->
+<section class="hero">
+  <h2>Latest South Africa News</h2>
+  <p>Stay updated with breaking news and insightful commentary.</p>
+</section>
 
-  <footer>
-    <p>&copy; 2025 DailyScope News. All Rights Reserved.</p>
-  </footer>
+<main style="padding:20px;">
+  <div class="news-container" id="latestNews">
+    <p>Loading latest news...</p>
+  </div>
+</main>
 
-  <script>
-    // 🔑 Your working NewsAPI key
-    const apiKey = '67cf1181fa4e46dab6dd0f97b92874b1';
+<footer>
+  <p>&copy; 2025 DailyScope News. All Rights Reserved.</p>
+  <div style="margin-top:10px;">
+    <a href="https://www.buymeacoffee.com/YOUR_USERNAME" target="_blank" 
+       style="display:inline-block;background:#ff6600;color:#fff;padding:8px 15px;border-radius:5px;text-decoration:none;font-weight:bold;">
+      ☕ Buy Me a Coffee
+    </a>
+    <a href="privacy.html" style="margin-left:15px;color:#fff;text-decoration:underline;">Privacy</a>
+    <a href="terms.html" style="margin-left:10px;color:#fff;text-decoration:underline;">Terms</a>
+    <a href="disclaimer.html" style="margin-left:10px;color:#fff;text-decoration:underline;">Disclaimer</a>
+  </div>
+</footer>
 
-    // 🇿🇦 Fetch South African news (you can change 'za' to 'us' or any other country code)
-    const endpoint = `https://newsapi.org/v2/top-headlines?country=za&pageSize=9&apiKey=${apiKey}`;
+<script>
+  const apiKey = '67cf1181fa4e46dab6dd0f97b92874b1';
+  const endpoint = `https://newsapi.org/v2/everything?q=South%20Africa&language=en&pageSize=9&sortBy=publishedAt&apiKey=${apiKey}`;
+  const fallbackImage = 'https://via.placeholder.com/400x200?text=No+Image';
 
-    async function fetchNews() {
-      const container = document.getElementById('latestNews');
-      container.innerHTML = '<p>Loading latest news...</p>';
+  async function fetchNews() {
+    const container = document.getElementById('latestNews');
+    container.innerHTML = '<p>Loading latest news...</p>';
 
-      try {
-        const response = await fetch(endpoint);
-        const data = await response.json();
+    try {
+      const response = await fetch(endpoint);
+      const data = await response.json();
 
-        if (data.status !== 'ok' || !data.articles || data.articles.length === 0) {
-          container.innerHTML = '<p>No news found. Try again later.</p>';
-          return;
-        }
-
-        container.innerHTML = ''; // clear old content
-
-        data.articles.forEach(article => {
-          const card = document.createElement('article');
-          card.className = 'news';
-          card.innerHTML = `
-            <img src="${article.urlToImage || 'https://via.placeholder.com/400x200?text=No+Image'}" alt="News Image">
-            <h3>${article.title || 'Untitled Article'}</h3>
-            <p>${article.description || 'No description available.'}</p>
-            <a href="${article.url}" target="_blank">Read More</a>
-          `;
-          container.appendChild(card);
-        });
-
-      } catch (error) {
-        console.error('Error fetching news:', error);
-        container.innerHTML = '<p style="color:red;">Error loading news. Please check your connection.</p>';
+      if (data.status !== 'ok' || !data.articles || data.articles.length === 0) {
+        container.innerHTML = '<p>No news found. Try again later.</p>';
+        return;
       }
-    }
 
-    fetchNews();
-  </script>
+      container.innerHTML = '';
+
+      data.articles.forEach(article => {
+        const card = document.createElement('article');
+        card.className = 'news';
+        const imageURL = article.urlToImage ? article.urlToImage : fallbackImage;
+        card.innerHTML = `
+          <img src="${imageURL}" alt="News Image" onerror="this.onerror=null;this.src='${fallbackImage}';">
+          <h3>${article.title || 'Untitled Article'}</h3>
+          <p>${article.description || 'No description available.'}</p>
+          <p><strong>Our Take:</strong> Insightful commentary to ensure original content for AdSense.</p>
+          <a href="${article.url}" target="_blank">Read More</a>
+        `;
+        container.appendChild(card);
+      });
+
+    } catch (error) {
+      console.error('Error fetching news:', error);
+      container.innerHTML = '<p style="color:red;">Error loading news. Please check your connection.</p>';
+    }
+  }
+
+  fetchNews();
+</script>
 
 </body>
-  </html>
+</html>
