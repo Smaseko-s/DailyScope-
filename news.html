@@ -13,13 +13,11 @@
         text-align: center;
         padding: 100px 20px;
     }
-
     .hero h2 {
         font-size: 2.5em;
         margin-bottom: 10px;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
     }
-
     .hero p {
         font-size: 1.2em;
         text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
@@ -41,7 +39,6 @@
   </nav>
 </header>
 
-<!-- Hero Section -->
 <section class="hero">
   <h2>Latest South Africa News</h2>
   <p>Stay updated with breaking news and insightful commentary.</p>
@@ -68,7 +65,8 @@
 
 <script>
   const apiKey = '67cf1181fa4e46dab6dd0f97b92874b1';
-  const endpoint = `https://newsapi.org/v2/everything?q=South%20Africa&language=en&pageSize=9&sortBy=publishedAt&apiKey=${apiKey}`;
+  const newsQuery = encodeURIComponent('South Africa');
+  const newsURL = `https://newsapi.org/v2/everything?q=${newsQuery}&language=en&pageSize=9&sortBy=publishedAt&apiKey=${apiKey}`;
   const fallbackImage = 'https://via.placeholder.com/400x200?text=No+Image';
 
   async function fetchNews() {
@@ -76,8 +74,11 @@
     container.innerHTML = '<p>Loading latest news...</p>';
 
     try {
-      const response = await fetch(endpoint);
-      const data = await response.json();
+      // Use CORS proxy
+      const proxyURL = `https://api.allorigins.win/get?url=${encodeURIComponent(newsURL)}`;
+      const response = await fetch(proxyURL);
+      const textData = await response.json();
+      const data = JSON.parse(textData.contents);
 
       if (data.status !== 'ok' || !data.articles || data.articles.length === 0) {
         container.innerHTML = '<p>No news found. Try again later.</p>';
