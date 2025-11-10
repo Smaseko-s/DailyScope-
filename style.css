@@ -1,0 +1,233 @@
+/* =======================
+   GENERAL STYLES
+======================= */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+h1, h2, h3 {
+    font-family: 'Arial', sans-serif;
+    margin: 0 0 10px 0;
+}
+
+a {
+    color: #ff6600;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* =======================
+   HEADER & NAVIGATION
+======================= */
+header {
+    background: #002244;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin: 5px 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 5px;
+}
+
+nav ul li a:hover, .active {
+    background: #ff6600;
+    transition: 0.3s;
+}
+
+/* =======================
+   HERO SECTION
+======================= */
+.hero {
+    background: url('https://via.placeholder.com/1200x400') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h2 {
+    font-size: 2em;
+}
+
+/* =======================
+   NEWS CARDS
+======================= */
+.news-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.news {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: 10px;
+    width: 300px;
+    overflow: hidden;
+}
+
+.news img {
+    width: 100%;
+    height: auto;
+}
+
+.news h3 {
+    margin: 10px;
+    color: #002244;
+}
+
+.news p {
+    margin: 10px;
+    font-size: 0.9em;
+}
+
+.news a {
+    display: inline-block;
+    margin: 10px;
+    padding: 8px 15px;
+    background: #002244;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.news a:hover {
+    background: #ff6600;
+}
+
+/* =======================
+   FORMS
+======================= */
+form {
+    max-width: 450px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 6px;
+    color: #002244;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-family: inherit;
+    font-size: 1em;
+}
+
+button {
+    display: inline-block;
+    background: #002244;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #ff6600;
+}
+
+.success-message {
+    color: green;
+    margin-top: 15px;
+    display: none;
+}
+
+.error-message {
+    color: red;
+    margin-top: 15px;
+    display: none;
+}
+
+/* =======================
+   MAIN CONTENT / LEGAL PAGES
+======================= */
+main {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    line-height: 1.6;
+}
+
+ul {
+    margin-left: 20px;
+}
+
+em {
+    color: #555;
+}
+
+/* =======================
+   FOOTER
+======================= */
+footer {
+    background: #002244;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+/* =======================
+   RESPONSIVE DESIGN
+======================= */
+@media (max-width: 768px) {
+    .news-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+}

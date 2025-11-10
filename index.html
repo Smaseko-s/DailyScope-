@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DailyScope News</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Dynamic Header -->
+  <div id="header-placeholder"></div>
+
+  <section class="hero">
+    <h2>Breaking News – Updated in Real Time</h2>
+    <p>Stay informed with the latest headlines from around the world.</p>
+  </section>
+
+  <main class="news-container" id="homeNews">
+    <!-- Static news articles with original commentary -->
+    <article class="news">
+      <img src="https://via.placeholder.com/400x200" alt="Headline">
+      <h3>Global Markets Rally Amid Economic Recovery</h3>
+      <p>Investors remain optimistic as markets show signs of recovery worldwide.</p>
+      <p><em>Commentary:</em> Analysts suggest monitoring key market indicators to track ongoing trends.</p>
+      <a href="news.html">Read More</a>
+    </article>
+
+    <article class="news">
+      <img src="https://via.placeholder.com/400x200" alt="Headline">
+      <h3>Technology: AI Revolutionizes the Workplace</h3>
+      <p>Artificial Intelligence is transforming industries at an unprecedented rate.</p>
+      <p><em>Commentary:</em> Experts believe businesses adopting AI early may gain competitive advantages.</p>
+      <a href="news.html">Read More</a>
+    </article>
+
+    <article class="news">
+      <img src="https://via.placeholder.com/400x200" alt="Headline">
+      <h3>Global Climate Initiatives Gain Momentum</h3>
+      <p>New international agreements are pushing for sustainable energy adoption.</p>
+      <p><em>Commentary:</em> Environmental analysts highlight the importance of these initiatives for long-term sustainability.</p>
+      <a href="news.html">Read More</a>
+    </article>
+  </main>
+
+  <!-- Dynamic Footer -->
+  <div id="footer-placeholder"></div>
+
+  <script>
+    // Function to load external HTML (works on GitHub Pages)
+    function loadHTML(containerId, filePath) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      fetch(filePath)
+        .then(response => {
+          if (!response.ok) throw new Error("Network response was not ok");
+          return response.text();
+        })
+        .then(data => container.innerHTML = data)
+        .catch(error => {
+          console.error(`Error loading ${filePath}:`, error);
+          container.innerHTML = "";
+        });
+    }
+
+    // Load header and footer
+    loadHTML('header-placeholder', './header.html');
+    loadHTML('footer-placeholder', './footer.html');
+
+    // Highlight active menu item
+    window.addEventListener('DOMContentLoaded', () => {
+      const currentPage = window.location.pathname.split("/").pop();
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === currentPage) link.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

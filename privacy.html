@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy – DailyScope News</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Dynamic Header -->
+  <div id="header-placeholder"></div>
+
+  <main style="padding:20px; max-width:800px; margin:auto;">
+    <h2>Privacy Policy</h2>
+    <p>Your privacy is important to us. DailyScope News is committed to protecting the personal information you share with us.</p>
+    
+    <h3>Information We Collect</h3>
+    <p>We may collect information when you submit forms, subscribe to newsletters, or interact with our site. This includes your name, email address, and messages.</p>
+    
+    <h3>How We Use Your Information</h3>
+    <p>Your information is used solely to respond to inquiries, provide services, and improve user experience. We do not sell or share your personal data with third parties for marketing purposes.</p>
+    
+    <h3>Cookies & Analytics</h3>
+    <p>Our website may use cookies to enhance your experience and analyze site traffic. These cookies do not contain personally identifiable information.</p>
+    
+    <h3>Third-Party Links</h3>
+    <p>Our site may contain links to third-party websites. We are not responsible for the privacy practices of external sites.</p>
+    
+    <h3>Changes to This Policy</h3>
+    <p>We may update this privacy policy from time to time. Changes will be reflected on this page with an updated date.</p>
+    
+    <p>&copy; 2025 DailyScope News. All Rights Reserved.</p>
+  </main>
+
+  <!-- Dynamic Footer -->
+  <div id="footer-placeholder"></div>
+
+  <script>
+    function loadHTML(containerId, filePath) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      fetch(filePath)
+        .then(response => response.ok ? response.text() : "")
+        .then(data => container.innerHTML = data)
+        .catch(() => container.innerHTML = "");
+    }
+
+    loadHTML('header-placeholder', './header.html');
+    loadHTML('footer-placeholder', './footer.html');
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const currentPage = window.location.pathname.split("/").pop();
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === currentPage) link.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

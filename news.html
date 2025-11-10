@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latest News – DailyScope News</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Dynamic Header -->
+  <div id="header-placeholder"></div>
+
+  <main>
+    <h2>Latest Headlines</h2>
+    <div class="news-container" id="latestNews">
+      <p>Loading latest news...</p>
+    </div>
+  </main>
+
+  <!-- Dynamic Footer -->
+  <div id="footer-placeholder"></div>
+
+  <script>
+    // Function to load external HTML (works on GitHub Pages)
+    function loadHTML(containerId, filePath) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      fetch(filePath)
+        .then(response => {
+          if (!response.ok) throw new Error("Network response was not ok");
+          return response.text();
+        })
+        .then(data => container.innerHTML = data)
+        .catch(error => {
+          console.error(`Error loading ${filePath}:`, error);
+          container.innerHTML = "";
+        });
+    }
+
+    // Load header and footer
+    loadHTML('header-placeholder', './header.html');
+    loadHTML('footer-placeholder', './footer.html');
+
+    // Highlight active menu item
+    window.addEventListener('DOMContentLoaded', () => {
+      const currentPage = window.location.pathname.split("/").pop();
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === currentPage) link.classList.add('active');
+      });
+    });
+
+    // News API Integration
+    const apiKey = 'AT1ZaPkvAn7bSb0m95LCi56tsqzof0cykHbuQCDj';
+    const endpoint = `https://newsapi.org/v2/top-headlines?country=us&pageSize=9&apiKey=${apiKey}`;
+
+    // Original commentary snippets
+    const commentarySnippets = [
+      "Experts say this development could impact global markets significantly.",
+      "Analysts suggest keeping an eye on this trend in the coming days.",
+      "This news highlights ongoing shifts in the industry landscape.",
+      "Readers should note that this event may have long-term implications.",
+      "Our editorial team emphasizes careful monitoring of this situation."
+    ];
+
+    function getRandomCommentary() {
+      return commentarySnippets[Math.floor(Math.random() * commentarySnippets.length)];
+    }
+
+    async function fetchNews() {
+      const container = document.getElementById('latestNews');
+      container.innerHTML = '<p>Loading latest news...</p>';
+
+      try {
+        const response = await fetch(endpoint);
+        const data = await response.json();
+
+        if (data.status !== 'ok' || !data.articles.length) {
+          container.innerHTML = '<p>No news found. Try again later.</p>';
+          return;
+        }
+
+        container.innerHTML = '';
+
+        data.articles.forEach(article => {
+          const card = document.createElement('article');
+          card.className = 'news';
+
+          // Add original commentary
+          const commentary = getRandomCommentary();
+
+          card.innerHTML = `
+            <img src="${article.urlToImage || 'https://via.placeholder.com/400x200'}" alt="News Image">
+            <h3>${article.title || 'Untitled Article'}</h3>
+            <p>${article.description || 'No description available.'}</p>
+            <p><em>Commentary:</em> ${commentary}</p>
+            <a href="${article.url}" target="_blank">Read More</a>
+          `;
+
+          container.appendChild(card);
+        });
+      } catch (error) {
+        console.error('Error fetching news:', error);
+        container.innerHTML = '<p style="color:red;">Error loading news. Please check your connection.</p>';
+      }
+    }
+
+    fetchNews();
+  </script>
+
+</body>
+</html>

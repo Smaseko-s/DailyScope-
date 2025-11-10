@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About – DailyScope News</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Dynamic Header -->
+  <div id="header-placeholder"></div>
+
+  <main style="padding:20px; max-width:800px; margin:auto;">
+    <h2>About DailyScope News</h2>
+    <p>Welcome to DailyScope News, your go-to source for breaking stories and insightful journalism. We deliver accurate, unbiased, and timely information from around the world.</p>
+    <p>Founded in 2025, our mission is to inform, inspire, and empower readers through high-quality reporting. Our editorial team is dedicated to bringing you the latest news, analysis, and opinions in an easy-to-read format.</p>
+    <p>We value our readers and welcome your feedback to help us improve and provide the most relevant news content.</p>
+  </main>
+
+  <!-- Dynamic Footer -->
+  <div id="footer-placeholder"></div>
+
+  <script>
+    function loadHTML(containerId, filePath) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      fetch(filePath)
+        .then(response => response.ok ? response.text() : "")
+        .then(data => container.innerHTML = data)
+        .catch(() => container.innerHTML = "");
+    }
+
+    loadHTML('header-placeholder', './header.html');
+    loadHTML('footer-placeholder', './footer.html');
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const currentPage = window.location.pathname.split("/").pop();
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === currentPage) link.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

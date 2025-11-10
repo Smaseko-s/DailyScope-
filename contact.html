@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact – DailyScope News</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Dynamic Header -->
+  <div id="header-placeholder"></div>
+
+  <main style="padding:20px; max-width:600px; margin:auto;">
+    <h2>Contact Us</h2>
+    <p>If you have any inquiries, suggestions, or partnerships, please reach out via the form below:</p>
+
+    <form action="https://formspree.io/f/xwpaerjp" method="POST">
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name" required><br><br>
+
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+
+      <label for="message">Message:</label><br>
+      <textarea id="message" name="message" rows="5" required></textarea><br><br>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </main>
+
+  <!-- Dynamic Footer -->
+  <div id="footer-placeholder"></div>
+
+  <script>
+    // Function to load external HTML (works on GitHub Pages)
+    function loadHTML(containerId, filePath) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      fetch(filePath)
+        .then(response => {
+          if (!response.ok) throw new Error("Network response was not ok");
+          return response.text();
+        })
+        .then(data => container.innerHTML = data)
+        .catch(error => {
+          console.error(`Error loading ${filePath}:`, error);
+          container.innerHTML = "";
+        });
+    }
+
+    // Load header and footer
+    loadHTML('header-placeholder', './header.html');
+    loadHTML('footer-placeholder', './footer.html');
+
+    // Highlight active menu item
+    window.addEventListener('DOMContentLoaded', () => {
+      const currentPage = window.location.pathname.split("/").pop();
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === currentPage) link.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
