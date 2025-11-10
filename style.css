@@ -1,6 +1,4 @@
-/* =======================
-   GENERAL STYLES
-======================= */
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -8,23 +6,6 @@ body {
     color: #333;
 }
 
-h1, h2, h3 {
-    font-family: 'Arial', sans-serif;
-    margin: 0 0 10px 0;
-}
-
-a {
-    color: #ff6600;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* =======================
-   HEADER & NAVIGATION
-======================= */
 header {
     background: #002244;
     color: #fff;
@@ -62,11 +43,9 @@ nav ul li a:hover, .active {
     transition: 0.3s;
 }
 
-/* =======================
-   HERO SECTION
-======================= */
+/* Hero Section */
 .hero {
-    background: url('https://via.placeholder.com/1200x400') center/cover no-repeat;
+    background: url('https://via.placeholder.com/1200x400') center/cover;
     color: white;
     text-align: center;
     padding: 80px 20px;
@@ -76,9 +55,7 @@ nav ul li a:hover, .active {
     font-size: 2em;
 }
 
-/* =======================
-   NEWS CARDS
-======================= */
+/* News Section */
 .news-container {
     display: flex;
     flex-wrap: wrap;
@@ -124,88 +101,7 @@ nav ul li a:hover, .active {
     background: #ff6600;
 }
 
-/* =======================
-   FORMS
-======================= */
-form {
-    max-width: 450px;
-    margin: 30px auto;
-    background: #fff;
-    padding: 25px 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    text-align: left;
-}
-
-label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 6px;
-    color: #002244;
-}
-
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    font-family: inherit;
-    font-size: 1em;
-}
-
-button {
-    display: inline-block;
-    background: #002244;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1em;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-button:hover {
-    background: #ff6600;
-}
-
-.success-message {
-    color: green;
-    margin-top: 15px;
-    display: none;
-}
-
-.error-message {
-    color: red;
-    margin-top: 15px;
-    display: none;
-}
-
-/* =======================
-   MAIN CONTENT / LEGAL PAGES
-======================= */
-main {
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: auto;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    line-height: 1.6;
-}
-
-ul {
-    margin-left: 20px;
-}
-
-em {
-    color: #555;
-}
-
-/* =======================
-   FOOTER
-======================= */
+/* Footer */
 footer {
     background: #002244;
     color: #fff;
@@ -214,20 +110,10 @@ footer {
     margin-top: 20px;
 }
 
-/* =======================
-   RESPONSIVE DESIGN
-======================= */
+/* Responsive Design */
 @media (max-width: 768px) {
     .news-container {
         flex-direction: column;
         align-items: center;
-    }
-
-    nav ul {
-        flex-direction: column;
-    }
-
-    nav ul li {
-        margin: 5px 0;
     }
 }
