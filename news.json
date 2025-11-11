@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Global Markets Rally Amid Economic Recovery",
+    "description": "Investors remain optimistic as markets show signs of recovery worldwide.",
+    "url": "https://example.com/global-markets-rally",
+    "image": "images/market.jpg",
+    "commentary": "Our take: Markets are showing strong recovery signals, but investors should remain cautious as global inflation trends persist."
+  },
+  {
+    "title": "AI Revolutionizes the Workplace",
+    "description": "Artificial Intelligence is transforming industries at an unprecedented rate.",
+    "url": "https://example.com/ai-revolution-workplace",
+    "image": "images/ai.jpg",
+    "commentary": "Our take: AI is boosting productivity and automating mundane tasks, yet ethical considerations must guide its adoption."
+  },
+  {
+    "title": "Climate Change: Extreme Weather on the Rise",
+    "description": "Scientists warn that climate change is causing more frequent extreme weather events.",
+    "url": "https://example.com/climate-extreme-weather",
+    "image": "images/climate.jpg",
+    "commentary": "Our take: Communities need to invest in sustainable infrastructure to mitigate risks of climate-induced disasters."
+  },
+  {
+    "title": "Local Sports Team Wins Championship",
+    "description": "The local team takes home the national championship in a thrilling final.",
+    "url": "https://example.com/local-sports-championship",
+    "image": "images/sports.jpg",
+    "commentary": "Our take: A proud moment for the city’s sports community, inspiring youth to pursue their athletic dreams."
+  },
+  {
+    "title": "Economic Policies Aim to Boost Growth",
+    "description": "New economic policies are expected to stimulate business and investment.",
+    "url": "https://example.com/economic-policies-growth",
+    "image": "images/economy.jpg",
+    "commentary": "Our take: These policies are promising, but implementation and monitoring will determine their real impact on growth."
+  }
+]
