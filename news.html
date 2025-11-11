@@ -41,7 +41,7 @@
 
 <section class="hero">
   <h2>Latest South Africa News</h2>
-  <p>Stay updated with breaking news and insightful commentary.</p>
+  <p>Stay updated with original articles and insights.</p>
 </section>
 
 <main style="padding:20px;">
@@ -64,50 +64,36 @@
 </footer>
 
 <script>
-  const apiKey = '67cf1181fa4e46dab6dd0f97b92874b1';
-  const newsQuery = encodeURIComponent('South Africa');
-  const newsURL = `https://newsapi.org/v2/everything?q=${newsQuery}&language=en&pageSize=9&sortBy=publishedAt&apiKey=${apiKey}`;
-  const fallbackImage = 'https://via.placeholder.com/400x200?text=No+Image';
+  const container = document.getElementById('latestNews');
+  const fallbackImage = 'https://via.placeholder.com/400x200';
 
-  async function fetchNews() {
-    const container = document.getElementById('latestNews');
-    container.innerHTML = '<p>Loading latest news...</p>';
-
+  async function loadNews() {
     try {
-      // Use CORS proxy
-      const proxyURL = `https://api.allorigins.win/get?url=${encodeURIComponent(newsURL)}`;
-      const response = await fetch(proxyURL);
-      const textData = await response.json();
-      const data = JSON.parse(textData.contents);
-
-      if (data.status !== 'ok' || !data.articles || data.articles.length === 0) {
-        container.innerHTML = '<p>No news found. Try again later.</p>';
-        return;
-      }
+      const response = await fetch('news.json');
+      const articles = await response.json();
 
       container.innerHTML = '';
 
-      data.articles.forEach(article => {
+      articles.forEach(article => {
         const card = document.createElement('article');
         card.className = 'news';
-        const imageURL = article.urlToImage ? article.urlToImage : fallbackImage;
         card.innerHTML = `
-          <img src="${imageURL}" alt="News Image" onerror="this.onerror=null;this.src='${fallbackImage}';">
-          <h3>${article.title || 'Untitled Article'}</h3>
-          <p>${article.description || 'No description available.'}</p>
-          <p><strong>Our Take:</strong> Insightful commentary to ensure original content for AdSense.</p>
+          <img src="${article.image || fallbackImage}" alt="News Image" onerror="this.onerror=null;this.src='${fallbackImage}';">
+          <h3>${article.title}</h3>
+          <p>${article.description}</p>
+          <p><strong>Our Take:</strong> ${article.commentary}</p>
           <a href="${article.url}" target="_blank">Read More</a>
         `;
         container.appendChild(card);
       });
 
     } catch (error) {
-      console.error('Error fetching news:', error);
-      container.innerHTML = '<p style="color:red;">Error loading news. Please check your connection.</p>';
+      console.error('Error loading news:', error);
+      container.innerHTML = '<p style="color:red;">Error loading news. Please try again later.</p>';
     }
   }
 
-  fetchNews();
+  loadNews();
 </script>
 
 </body>
